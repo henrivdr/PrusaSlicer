@@ -786,7 +786,7 @@ bool ClipperBase::AddPathInternal(const Path &pg, int highI, PolyType PolyTyp, b
     throw clipperException("AddPath: Open paths have been disabled.");
 #endif
 
-  assert(highI >= 0 && highI < pg.size());
+  assert(highI >= 0 && size_t(highI) < pg.size());
 
   //1. Basic (first) edge initialization ...
   try

@@ -8,7 +8,7 @@ using namespace Slic3r::Arachne;
 
 SquareGrid::SquareGrid(coord_t cell_size) : cell_size(cell_size)
 {
-    assert(cell_size > 0U);
+    assert(cell_size > static_cast<coord_t>(0));
 }
 
 

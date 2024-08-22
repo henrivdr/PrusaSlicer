@@ -4709,7 +4709,7 @@ void GCodeProcessor::calculate_time(GCodeProcessorResult& result, size_t keep_la
         const auto& [new_pos, new_moves] = *it;
         if (new_moves.empty())
             continue;
-        for (int i = last_pos; i >= new_pos + new_moves.size(); --i) // Move the elements to their final place.
+        for (size_t i = last_pos; i >= new_pos + new_moves.size(); --i) // Move the elements to their final place.
             m[i] = m[i - offset];
         std::copy(new_moves.begin(), new_moves.end(), m.begin() + new_pos);
         last_pos = new_pos - 1;
