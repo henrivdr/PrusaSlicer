@@ -44,6 +44,7 @@ option(SLIC3R_UBSAN             "Enable UBSan on Clang and GCC" 0)
 option(SLIC3R_ENABLE_FORMAT_STEP "Enable compilation of STEP file support" ON)
 option(SLIC3R_LOG_TO_FILE       "Enable logging into file")
 option(SLIC3R_REPO_URL          "Preset repo URL")
+option(SEMVER_DEBUG             "Semver debug output" OFF)
 
 # SLIC3R_OPENGL_ES can be enabled only if SLIC3R_GUI is enabled.
 CMAKE_DEPENDENT_OPTION(SLIC3R_OPENGL_ES "Compile PrusaSlicer targeting OpenGL ES" OFF "SLIC3R_GUI" OFF)
@@ -178,6 +179,8 @@ endforeach ()
 
 # Add our own cmake module path.
 list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake/modules/)
+message(STATUS "PROJECT_SOURCE_DIR: ${PROJECT_SOURCE_DIR}")
+message(STATUS "CMAKE_MODULE_PATH: ${CMAKE_MODULE_PATH}")
 
 enable_testing ()
 
@@ -343,6 +346,9 @@ endif ()
 # Where all the bundled libraries reside?
 set(LIBDIR ${CMAKE_CURRENT_SOURCE_DIR}/src)
 set(LIBDIR_BIN ${CMAKE_CURRENT_BINARY_DIR}/src)
+message(STATUS "LIBDIR: ${LIBDIR}")
+message(STATUS "LIBDIR_BIN: ${LIBDIR_BIN}")
+
 # For the bundled boost libraries (boost::nowide)
 include_directories(${LIBDIR})
 # For generated header files
@@ -611,7 +617,7 @@ function(prusaslicer_copy_dlls target)
         set (_out_dir "$<TARGET_PROPERTY:${target},BINARY_DIR>")
     endif ()
     
-    # This has to be a separate target due to the windows command line lenght limits    
+    # This has to be a separate target due to the windows command line length limits    
     add_custom_command(TARGET ${target} POST_BUILD 
         COMMAND ${CMAKE_COMMAND} -E copy ${TOP_LEVEL_PROJECT_DIR}/deps/+GMP/gmp/lib/win${_bits}/libgmp-10.dll ${_out_dir}
         COMMENT "Copy gmp runtime to build tree"
