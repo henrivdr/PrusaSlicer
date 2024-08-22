@@ -2623,7 +2623,7 @@ static void remove_deleted_elements(std::vector<SupportElements> &move_bounds)
                     // Mark as deleted in the map.
                     map_current[layer.size()] = -1;
                 }
-                assert(i == layer.size() || i + 1 < layer.size());
+                assert(i == int32_t(layer.size()) || i + 1 < int32_t(layer.size()));
                 if (i + 1 < int32_t(layer.size())) {
                     element = std::move(layer.back());
                     layer.pop_back();                    
@@ -2730,7 +2730,7 @@ static void create_nodes_from_area(
                     if (elem.state.result_on_layer_is_set()) {
                         double radius_increase = support_element_radius(config, elem) - support_element_radius(config, parent);
                         assert(radius_increase >= 0);
-                        double shift = (elem.state.result_on_layer - parent.state.result_on_layer).cast<double>().norm();
+                        // double shift = (elem.state.result_on_layer - parent.state.result_on_layer).cast<double>().norm();
                         //FIXME this assert fails a lot. Is it correct?
 //                        assert(shift < radius_increase + 2. * config.maximum_move_distance_slow);
                     }
@@ -2755,7 +2755,7 @@ static void create_nodes_from_area(
                 if (elem.state.result_on_layer_is_set()) {
                     double radius_increase = support_element_radius(config, elem) - support_element_radius(config, parent);
                     assert(radius_increase >= 0);
-                    double shift = (elem.state.result_on_layer - parent.state.result_on_layer).cast<double>().norm();
+                    // double shift = (elem.state.result_on_layer - parent.state.result_on_layer).cast<double>().norm();
                     //FIXME this assert fails a lot. Is it correct?
 //                    assert(shift < radius_increase + 2. * config.maximum_move_distance_slow);
                 }

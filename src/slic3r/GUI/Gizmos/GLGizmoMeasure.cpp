@@ -870,7 +870,7 @@ void GLGizmoMeasure::on_render()
             case Measure::SurfaceFeatureType::Plane:
             {
                 const auto& [idx, normal, pt] = feature.get_plane();
-                assert(idx < m_plane_models_cache.size());
+                assert(size_t(idx) < m_plane_models_cache.size());
                 set_matrix_uniforms(Transform3d::Identity());
                 set_emission_uniform(colors.front(), hover);
                 m_plane_models_cache[idx].set_color(colors.front());
