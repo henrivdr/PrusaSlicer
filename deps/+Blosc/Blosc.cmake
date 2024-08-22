@@ -7,8 +7,11 @@ else()
 endif()
 
 add_cmake_project(Blosc
-    URL https://github.com/Blosc/c-blosc/archive/8724c06e3da90f10986a253814af18ca081d8de0.zip
-    URL_HASH SHA256=53986fd04210b3d94124b7967c857f9766353e576a69595a9393999e0712c035
+    #URL https://github.com/Blosc/c-blosc/archive/8724c06e3da90f10986a253814af18ca081d8de0.zip
+    # URL_HASH SHA256=53986fd04210b3d94124b7967c857f9766353e576a69595a9393999e0712c035
+    URL https://github.com/Blosc/c-blosc/archive/refs/tags/v1.21.6.zip
+    URL_HASH SHA256=1919c97d55023c04aa8771ea8235b63e9da3c22e3d2a68340b33710d19c2a2eb
+    
     CMAKE_ARGS
         -DCMAKE_POSITION_INDEPENDENT_CODE=ON
         -DBUILD_SHARED=${_build_shared} 
