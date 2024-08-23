@@ -23,6 +23,7 @@ REQUIRED_DEV_PACKAGES=(
     ninja-build
     texinfo
     wget
+    libjemalloc-dev
 )
 
 if [[ -n "$UPDATE_LIB" ]]
