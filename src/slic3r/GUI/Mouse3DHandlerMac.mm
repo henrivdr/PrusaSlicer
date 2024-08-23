@@ -200,7 +200,7 @@ void Mouse3DController::init()
 
     if (! error) {
       // Registration is done either by 4letter constant (CFBundleSignature - obsolete
-      //and we dont have that) or Executable name in pascal string(first byte is string lenght).
+      //and we dont have that) or Executable name in pascal string(first byte is string length).
       //If no packets are recieved the name might be different - check cmake. If debugging try commenting
       // set_target_properties(PrusaSlicer PROPERTIES OUTPUT_NAME "prusa-slicer")
       clientID = RegisterConnexionClient(
